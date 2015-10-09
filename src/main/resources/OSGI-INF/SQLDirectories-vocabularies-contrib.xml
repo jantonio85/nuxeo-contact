@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="org.athento.nuxeo.vocabularies.RepresentanteVocabularies" version="1.0.0">
+	<extension target="org.nuxeo.ecm.directory.sql.SQLDirectoryFactory" point="directories">
+		
+	</extension>
+	<extension target="org.nuxeo.ecm.directory.ui.DirectoryUIManager" point="directories">
+	    
+	</extension>
+</component>

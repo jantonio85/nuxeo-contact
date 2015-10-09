@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="org.athento.nuxeo.types.RepresentanteTypes"
+	version="1.0.0">
+	<require>org.nuxeo.runtime.started</require>
+	<extension target="org.nuxeo.ecm.core.schema.TypeService"
+		point="schema">
+		<schema name="Representante" prefix="Representante" src="data/schemas/Representante.xsd" />
+		<schema name="Representante_view_cv" prefix="Representante_view_cv" src="data/schemas/Representante_view_cv.xsd" />
+	</extension>
+	<extension target="org.nuxeo.ecm.core.schema.TypeService"
+		point="doctype">
+		<doctype name="Representante" extends="File">
+			<schema name="Representante" />
+		</doctype>
+		<doctype name="Representante_view_cv" extends="Document">
+			<facet name="ContentViewDisplay" />
+			<schema name="Representante_view_cv" />
+		</doctype>
+
+	</extension>
+
+	<extension target="org.nuxeo.ecm.platform.types.TypeService"
+		point="types">
+		<type id="Representante">
+			<label>label.Representante.Representante</label>
+			<icon>/img/file_100.png</icon>
+			<bigIcon>/img/file_100.png</bigIcon>
+			<description>Representante</description>
+			<default-view>view_documents</default-view>
+			<layouts mode="create">
+				<layout>layout@Representante-edit</layout>
+			</layouts>
+			<layouts mode="edit">
+				<layout>layout@Representante-edit</layout>
+			</layouts>
+			<layouts mode="view">
+				<layout>layout@Representante-edit</layout>
+			</layouts>
+		</type>
+		<type id="Folder">
+			<subtypes>
+				<type>Representante</type>
+			</subtypes>
+		</type>
+		<type id="Workspace">
+			<subtypes>
+				<type>Representante</type>
+			</subtypes>
+		</type>
+	</extension>
+</component>

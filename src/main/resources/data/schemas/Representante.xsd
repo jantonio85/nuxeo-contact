@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://nuxeo.org/schemas/usc/entidad/documento/registro/Representante" 
+	xmlns:nxs="http://nuxeo.org/schemas/usc/entidad/documento/registro/Representante">
+
+	<xs:element name="nombre" type="xs:string" />
+	<xs:element name="direccion" type="xs:string" />
+	<xs:element name="telefono" type="xs:string" />
+	<xs:element name="empresa" type="xs:string" />
+	<xs:element name="email" type="xs:string"/>
+
+</xs:schema>

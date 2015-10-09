@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://nuxeo.org/schemas/usc/entidad/documento/registro/Representante_view_cv" 
+	xmlns:nxs="http://nuxeo.org/schemas/usc/entidad/documento/registro/Representante_view_cv">
+	
+	<xs:element name="dublincore_title" type="xs:string"/>
+	<xs:element name="Representante_direccion" type="xs:string"/>
+	<xs:element name="Representante_telefono" type="xs:string"/>
+	<xs:element name="Representante_empresa" type="xs:string"/>
+	<xs:element name="Representante_email" type="xs:string"/>
+	
+</xs:schema>
+	

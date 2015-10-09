@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="org.athento.nuxeo.contentview.RepresentanteContentView" version="1.0.0">
+	<extension target="org.nuxeo.ecm.platform.ui.web.ContentViewService" point="contentViews">
+		<contentView name="Representante_view">
+			<genericPageProvider class="org.nuxeo.elasticsearch.provider.ElasticSearchNxqlPageProvider">
+				<property name="coreSession">#{documentManager}</property>
+				<whereClause>
+					<predicate parameter="dc:title" operator="STARTSWITH">
+						<field schema="Representante_view_cv" name="dublincore_title" />
+					</predicate>
+					<predicate parameter="Representante:direccion" operator="STARTSWITH">
+						<field schema="Representante_view_cv" name="Representante_direccion" />
+					</predicate>
+					<predicate parameter="Representante:telefono" operator="STARTSWITH">
+						<field schema="Representante_view_cv" name="Representante_telefono" />
+					</predicate>
+					<predicate parameter="Representante:email" operator="STARTSWITH">
+						<field schema="Representante_view_cv" name="Representante_email" />
+					</predicate>
+					<predicate parameter="Representante:empresa" operator="STARTSWITH">
+						<field schema="Representante_view_cv" name="Representante_empresa" />
+					</predicate>
+					<!-- <fixedPart>ecm:mixinType != 'HiddenInNavigation' AND ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState !='deleted' and ecm:parentId=?</fixedPart> -->
+					<fixedPart>ecm:mixinType != 'HiddenInNavigation' AND ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState !='deleted' and ecm:primaryType='Representante'</fixedPart>
+				</whereClause>
+				<searchDocumentType>Representante_view_cv</searchDocumentType>
+				<!-- <parameter>#{currentDocument.id}</parameter> -->
+				<sort column="dc:created" ascending="true" />
+				<pageSize>50</pageSize>
+			</genericPageProvider>
+			<searchLayout name="Representante_view_cv@cvLayout" />
+			<useGlobalPageSize>true</useGlobalPageSize>
+			<refresh>
+				<event>documentChanged</event>
+				<event>documentChildrenChanged</event>
+			</refresh>
+			<cacheKey>#{currentDocument.id}</cacheKey>
+			<cacheSize>10</cacheSize>
+			<selectionList>CURRENT_SELECTION</selectionList>
+			<showTitle>false</showTitle>
+			<showFilterForm>true</showFilterForm>
+			<showPageSizeSelector>true</showPageSizeSelector>
+			<showRefreshCommand>true</showRefreshCommand>
+			<actions category="CURRENT_SELECTION_LIST" />
+			<actions category="cv_actions@Actas_view" />
+			<resultLayouts>
+				<layout name="TablaRepresentante" title="document_listing"
+					translateTitle="true" iconPath="/icons/document_listing_icon.png"
+					showCSVExport="true" showEditColumns="true" showSpreadsheet="true" />
+				<layout name="document_listing_thumbnail" title="document_thumbnail_listing"
+					translateTitle="true" iconPath="/icons/document_listing_icon_2_columns_icon.png"
+					showSpreadsheet="true" showEditRows="true" />
+			</resultLayouts>
+			<resultColumns>#{searchDocument.cvd.selectedLayoutColumns}
+			</resultColumns>
+			<resultLayout>#{searchDocument.cvd.resultLayoutName}</resultLayout>
+			<flags>
+				<flag>DOCUMENT_CONTENT</flag>
+			</flags>
+		</contentView>
+	</extension>
+</component>
